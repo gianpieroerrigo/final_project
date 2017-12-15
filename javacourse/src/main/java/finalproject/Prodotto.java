@@ -1,11 +1,15 @@
 package finalproject;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Prodotto {
@@ -15,8 +19,8 @@ public class Prodotto {
     private String descrizione;
     private Integer prezzo;
     private Sede sede;
-    private Ordine ordine;
-
+    private Set<Ordine> ordini;
+    
 	public Integer getId() {
 		return id;
 	}
@@ -47,10 +51,9 @@ public class Prodotto {
         return sede;
 	}
 	
-	@ManyToOne
-    @JoinColumn(name = "ordine")
-    public Ordine getOrdine() {
-        return ordine;
-	}
-
+	@OneToMany(mappedBy = "prodotto", cascade = CascadeType.ALL)
+    public Set<Ordine> getOrdini() {
+        return ordini;
+    }
+	
 }
