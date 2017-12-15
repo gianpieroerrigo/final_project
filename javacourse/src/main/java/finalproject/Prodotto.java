@@ -15,6 +15,7 @@ public class Prodotto {
     private String descrizione;
     private Integer prezzo;
     private Sede sede;
+    private Ordine ordine;
 
 	public Integer getId() {
 		return id;
@@ -44,6 +45,12 @@ public class Prodotto {
     @JoinColumn(name = "sede")
     public Sede getSede() {
         return sede;
+	}
+	
+	@ManyToOne
+    @JoinColumn(name = "ordine")
+    public Ordine getOrdine() {
+        return ordine;
 	}
 
 }

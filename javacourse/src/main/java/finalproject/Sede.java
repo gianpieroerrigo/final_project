@@ -26,12 +26,12 @@ public class Sede {
 		this.id = id;
 	}
 	
-	@OneToMany(mappedBy = "Sede", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
     public Set<Postazione> getPostazioni() {
         return postazioni;
     }
 	
-	@OneToMany(mappedBy = "Sede", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
     public Set<Prodotto> getProdotti() {
         return prodotti;
     }

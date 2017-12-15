@@ -1,9 +1,7 @@
 package finalproject;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +10,7 @@ public class Postazione {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private Sede sede;
+    private Set<Sessione> sessioni;
 
 	public Integer getId() {
 		return id;
@@ -26,5 +25,11 @@ public class Postazione {
     public Sede getSede() {
         return sede;
 	}
+	
+	@OneToMany(mappedBy = "postazione", cascade = CascadeType.ALL)
+    public Set<Sessione> getSessione() {
+        return sessioni;
+    }
+	
 
 }
