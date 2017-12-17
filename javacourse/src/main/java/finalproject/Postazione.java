@@ -6,20 +6,18 @@ import javax.persistence.*;
 
 @Entity
 public class Postazione {
-    @Id
+    
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private Sede sede;
     private Set<Sessione> sessioni;
-
+    
+    @Id
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
+		
 	@ManyToOne
     @JoinColumn(name = "sede")
     public Sede getSede() {
@@ -27,9 +25,22 @@ public class Postazione {
 	}
 	
 	@OneToMany(mappedBy = "postazione", cascade = CascadeType.ALL)
-    public Set<Sessione> getSessione() {
+    public Set<Sessione> getSessioni() {
         return sessioni;
     }
 	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
+	public void setSede(Sede sede) {
+		this.sede = sede;
+	}
+
+	
+	public void setSessioni(Set<Sessione> sessioni) {
+		this.sessioni = sessioni;
+	}
+	
+	
 }

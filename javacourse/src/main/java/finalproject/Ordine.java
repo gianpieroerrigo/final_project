@@ -1,7 +1,5 @@
 package finalproject;
 
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,27 +9,22 @@ import javax.persistence.ManyToOne;
 
 @Entity 
 public class Ordine {
-    @Id
+    
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private Integer prezzo;
     private Prodotto prodotto;
     private Sessione sessione;
 	
-    public Integer getid() {
+    @Id
+    public Integer getId() {
 		return id;
 	}
-	public void setid(Integer id) {
-		this.id = id;
-	}
+	
 	public Integer getPrezzo() {
 		return prezzo;
 	}
-	public void setPrezzo(Integer prezzo) {
-		this.prezzo = prezzo;
-	}
-    
-    
+	    
 	@ManyToOne
     @JoinColumn(name = "prodotto")
     public Prodotto getProdotto() {
@@ -43,5 +36,27 @@ public class Ordine {
     public Sessione getSessione() {
         return sessione;
 	}
+	
+	public void setid(Integer id) {
+		this.id = id;
+	}
+	
+	public void setPrezzo(Integer prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setProdotto(Prodotto prodotto) {
+		this.prodotto = prodotto;
+	}
+
+	public void setSessione(Sessione sessione) {
+		this.sessione = sessione;
+	}
+    
+	
 
 }

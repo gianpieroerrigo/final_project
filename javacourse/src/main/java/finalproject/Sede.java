@@ -12,28 +12,39 @@ import javax.persistence.OneToMany;
 
 @Entity 
 public class Sede {
-    @Id
+    
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private Set<Postazione> postazioni;
     private Set<Prodotto> prodotti;
 
-	public Integer getId() {
+	@Id
+    public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	
 	@OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
     public Set<Postazione> getPostazioni() {
         return postazioni;
     }
 	
+	
 	@OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
     public Set<Prodotto> getProdotti() {
         return prodotti;
     }
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public void setPostazioni(Set<Postazione> postazioni) {
+		this.postazioni = postazioni;
+	}
+	
+	public void setProdotti(Set<Prodotto> prodotti) {
+		this.prodotti = prodotti;
+	}
 
 }

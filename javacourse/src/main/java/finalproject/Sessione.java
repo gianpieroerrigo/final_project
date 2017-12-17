@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 @Entity 
 public class Sessione {
-    @Id
+    
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private Date inizio, fine;
@@ -21,25 +21,19 @@ public class Sessione {
     private Utente utente;
     private Set<Ordine> ordini;
     
-	public Integer getSessioneid() {
+    @Id
+	public Integer getId() {
 		return id;
 	}
-	public void setSessioneid(Integer sessioneid) {
-		this.id = sessioneid;
-	}
+	
 	public Date getInizio() {
 		return inizio;
 	}
-	public void setInizio(Date inizio) {
-		this.inizio = inizio;
-	}
+	
 	public Date getFine() {
 		return fine;
 	}
-	public void setFine(Date fine) {
-		this.fine = fine;
-	}
-	
+		
 	@ManyToOne
     @JoinColumn(name = "postazione")
     public Postazione getPostazione() {
@@ -56,5 +50,31 @@ public class Sessione {
     public Set<Ordine> getOrdini() {
         return ordini;
     }
+	
+	public void setId(Integer sessioneid) {
+		this.id = sessioneid;
+	}
+	
+	public void setInizio(Date inizio) {
+		this.inizio = inizio;
+	}
+	
+	public void setFine(Date fine) {
+		this.fine = fine;
+	}
+
+	public void setPostazione(Postazione postazione) {
+		this.postazione = postazione;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
+	public void setOrdini(Set<Ordine> ordini) {
+		this.ordini = ordini;
+	}
+	
+	
 
 }

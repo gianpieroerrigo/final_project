@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Prodotto {
-    @Id
+    
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private String descrizione;
@@ -21,14 +21,12 @@ public class Prodotto {
     private Sede sede;
     private Set<Ordine> ordini;
     
+    @Id
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
+		
 	public String getDescrizione() {
 		return descrizione;
 	}
@@ -45,6 +43,10 @@ public class Prodotto {
 		this.prezzo = prezzo;
 	}
 	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	@ManyToOne
     @JoinColumn(name = "sede")
     public Sede getSede() {
@@ -55,5 +57,19 @@ public class Prodotto {
     public Set<Ordine> getOrdini() {
         return ordini;
     }
+
+	public void setPrezzo(Integer prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public void setSede(Sede sede) {
+		this.sede = sede;
+	}
+
+	public void setOrdini(Set<Ordine> ordini) {
+		this.ordini = ordini;
+	}
+	
+	
 	
 }
